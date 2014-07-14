@@ -7,8 +7,7 @@ set( KRIGING_HDRS
   distance.hpp
   kernels.hpp
   kriging.hpp
-  sorting.hpp
-  twontree.hpp )
+)
 
 set( KRIGING_UIS )
 
