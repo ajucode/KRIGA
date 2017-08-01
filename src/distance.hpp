@@ -1,7 +1,7 @@
 /*__________________________________________________________________________________________________
 
-  autor: Pedro Guarderas
-  email: ajusworkopensource@gmail.com
+  author: Pedro Guarderas
+  email: pedro.felipe.guarderas@gmail.com
   date: 02-04-2013
   file: distance.hpp
 
@@ -16,7 +16,7 @@
 
 #include <gsl/gsl_math.h>
 
-namespace krig {
+namespace Kriga {
 
 /*__________________________________________________________________________________________________
   Distance functions
@@ -25,7 +25,8 @@ namespace krig {
   template <typename T, size_t N>
   inline size_t countof(const T (&arr)[N]) {
   return N;
-  }*/
+  }
+*/
 template <typename T, size_t N >
 char ( &_ArraySizeHelper( T (&arr)[N] ))[N];
 #define countof( arr ) (sizeof( _ArraySizeHelper( arr ) ))
@@ -105,6 +106,6 @@ double dst_weighted( const int& size, double* x, double* y,
     return pow( abs( w * d ), 1.0 / p );
 }
 
-} // namespace krig
+} // namespace Kriga
 
 #endif // DISTANCE

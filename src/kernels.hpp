@@ -1,7 +1,7 @@
 /*__________________________________________________________________________________________________
 
-  autor: Pedro Guarderas
-  email: ajusworkopensource@gmail.com
+  author: Pedro Guarderas
+  email: pedro.felipe.guarderas@gmail.com
   date: 02-04-2013
   file: kernels.hpp
 
@@ -21,13 +21,13 @@
 #include <gsl/gsl_math.h>
 
 
-namespace krig{
+namespace Kriga {
 /*__________________________________________________________________________________________________
   Isotropic covariance models
 */
 // Linear
-inline double kf_lin( const double& h,
-		      const double& alpha = 1.0 ) {
+inline double kf_lin( const double& h, 
+												const double& alpha = 1.0 ) {
     return alpha * h;
 }
 
@@ -100,6 +100,6 @@ inline double kf_mix( const double& h,
 	gsl_sf_exp( -sqrt(5.0) * ht );
 }
 
-} // namespace krig
+} // namespace Kriga
 
 #endif // KERNELS

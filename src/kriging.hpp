@@ -1,7 +1,7 @@
 /*__________________________________________________________________________________________________
 
-  autor: Pedro Guarderas
-  email: ajusworkopensource@gmail.com
+  author: Pedro Guarderas
+  email: pedro.felipe.guarderas@gmail.com
   date: 02-04-2013
   file: kriging.hpp
 
@@ -20,14 +20,14 @@
 #include <list>
 
 
-namespace krig {
+namespace Kriga {
 
 typedef std::list< GA::GlobalArray*> GA_array;
 
 /*__________________________________________________________________________________________________
   Kriging exception class
 */
-class KrigError {
+class KrigaError {
 public:
     typedef enum Exeptions {
 	type,
@@ -35,7 +35,7 @@ public:
 	name
     } Exep;
 	    
-    KrigError( const Exep e, const GA_array& array );
+    KrigaError( const Exep e, const GA_array& array );
 	    
     const char* what() const throw ();
 
@@ -43,7 +43,7 @@ public:
     const GA_array _garray;
 };
 
-std::ostream& operator << ( std::ostream& out, const KrigError& Error  );
+std::ostream& operator << ( std::ostream& out, const KrigaError& Error  );
 
 
 /*__________________________________________________________________________________________________
@@ -54,7 +54,7 @@ GA::GlobalArray* covariance( GA::GlobalArray* X,
 			     double (* kernel)( const double& ) );
 
 /* Convariance
-   w is used for calculate the weigthed distance function
+   w is used to calculate the weigthed distance function
    distance( x, y ) = sum_i w[i] * ( x[i] - y[i] )^2
    return:
    k0 = [ kernel( x0[.][ j ], X[.][ i ] ) ]
@@ -76,7 +76,7 @@ typedef enum KrigingType {
 } KrigType;
     
 typedef struct KrigingResult {
-    GA::GlobalArray* z;
+	GA::GlobalArray* z;
     GA::GlobalArray* k;
     GA::GlobalArray* K;
     GA::GlobalArray* MSE;
@@ -97,12 +97,21 @@ KrigResult simple_kriging( GA::GlobalArray* x0,
   Ordinary Kriging
 */
 KrigResult ordinary_kriging( GA::GlobalArray* x0, 
+		GA::GlobalArray* X,
+		GA::GlobalArray* Z,
+		GA::GlobalArray* w,
+		double (* kernel)( const double& ) );
+
+/*__________________________________________________________________________________________________
+  Universal Kriging
+*/
+KrigResult universal_kriging( GA::GlobalArray* x0,
 			     GA::GlobalArray* X,
 			     GA::GlobalArray* Z,
 			     GA::GlobalArray* w,
 			     double (* kernel)( const double& ) );
 
 
-} // namespace krig
+} // namespace Kriga
 
 #endif // KRIGING
