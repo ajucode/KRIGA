@@ -1,0 +1,13 @@
+# KRIGA install compile instruction
+To install KRIGA it is necessary first to have installed GA (Global Arrays toolkit)
+
+Inside KRIGA sources:
+1. Create a build directory
+   mkdir build
+2. Configure KRIGA build
+   cd build
+   ccmake ..
+3. Build
+   make
+4. Install
+   make install
