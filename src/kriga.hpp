@@ -11,18 +11,17 @@
   __________________________________________________________________________________________________
 */
 
-#ifndef KRIGING
-#define KRIGING
+#ifndef KRIGA
+#define KRIGA
 
-//#include <exception>
+#include <exception>
 #include <ga++.h>
 #include <iostream>
 #include <list>
 
-
 namespace Kriga {
 
-typedef std::list< GA::GlobalArray*> GA_array;
+typedef std::list< GA::GlobalArray* > GA_array;
 
 /*__________________________________________________________________________________________________
   Kriging exception class
@@ -76,12 +75,12 @@ typedef enum KrigingType {
 } KrigType;
     
 typedef struct KrigingResult {
-	GA::GlobalArray* z;
-    GA::GlobalArray* k;
-    GA::GlobalArray* K;
-    GA::GlobalArray* MSE;
-    GA::GlobalArray* F;
-    KrigType type;
+  GA::GlobalArray* z;
+  GA::GlobalArray* k;
+  GA::GlobalArray* K;
+  GA::GlobalArray* MSE;
+  GA::GlobalArray* F;
+  KrigType type;
 } KrigResult;
 
 /*__________________________________________________________________________________________________
@@ -96,22 +95,22 @@ KrigResult simple_kriging( GA::GlobalArray* x0,
 /*__________________________________________________________________________________________________
   Ordinary Kriging
 */
-KrigResult ordinary_kriging( GA::GlobalArray* x0, 
-		GA::GlobalArray* X,
-		GA::GlobalArray* Z,
-		GA::GlobalArray* w,
-		double (* kernel)( const double& ) );
-
-/*__________________________________________________________________________________________________
-  Universal Kriging
-*/
-KrigResult universal_kriging( GA::GlobalArray* x0,
+KrigResult ordinary_kriging( GA::GlobalArray* x0,
 			     GA::GlobalArray* X,
 			     GA::GlobalArray* Z,
 			     GA::GlobalArray* w,
 			     double (* kernel)( const double& ) );
 
+/*__________________________________________________________________________________________________
+  Universal Kriging
+*/
+KrigResult universal_kriging( GA::GlobalArray* x0,
+			      GA::GlobalArray* X,
+			      GA::GlobalArray* Z,
+			      GA::GlobalArray* w,
+			      double (* kernel)( const double& ) );
+
 
 } // namespace Kriga
 
-#endif // KRIGING
+#endif // KRIGA

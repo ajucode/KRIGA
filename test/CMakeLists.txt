@@ -1,7 +1,4 @@
 #------------------------------------------------------------------------------
-if( KRIGING_ENABLE_TESTS )
-#  enable_testing()
-  add_subdirectory( 
-    kriging_test_1
-)
-endif( KRIGING_ENABLE_TESTS )
+if( KRIGA_ENABLE_TESTS )
+  add_subdirectory( test_1 )
+endif( KRIGA_ENABLE_TESTS )

@@ -11,9 +11,10 @@
   __________________________________________________________________________________________________
  */
 
-#include "kriging.hpp"
 #include <gsl/gsl_math.h>
 #include <string>
+
+#include "kriga.hpp"
 
 
 Kriga::KrigaError::KrigaError( const Exep e, const GA_array& array ) :

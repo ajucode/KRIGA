@@ -1,10 +1,10 @@
 #------------------------------------------------------------------------------
-# Kriging
+# Kriga
 # author: Pedro Guarderas
 # date: 30-01-2013
 #------------------------------------------------------------------------------
 
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 3.0 )
 set( CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 # LLVM and clang previous configuration
@@ -54,11 +54,11 @@ set(CPACK_PACKAGE_VERSION_PATCH "1")
 set(COMPLETE_VERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH})
 
 set(PROJECT_VERSION ${COMPLETE_VERSION})
-project(kriging{PROJECT_VERSION})
-message(STATUS "Kriging version: ${COMPLETE_VERSION}")
+project(Kriga{PROJECT_VERSION})
+message(STATUS "Kriga version: ${COMPLETE_VERSION}")
 
-set(CMAKE_COLOR_MAKEFILE ON)
-option(KRIGING_ENABLE_TESTS "Enable testing" OFF )
+set( CMAKE_COLOR_MAKEFILE ON )
+option( KRIGA_ENABLE_TESTS "Enable testing" OFF )
 #CMAKE_FORCE_C_COMPILER ( /usr/bin/clang clang )
 #CMAKE_FORCE_CXX_COMPILER ( /usr/bin/clang++ clang_plus )
 add_definitions(-std=c++11)
@@ -91,24 +91,12 @@ if( GA_FOUND )
 endif( GA_FOUND )
 
 #------------------------------------------------------------------------------
-# Search OpenCL
-#find_package(OpenCL REQUIRED)
-
-#------------------------------------------------------------------------------
 # Search Boost library
 find_package(Boost)
 if(Boost_FOUND)
 #  include_directories(${Boost_INCLUDE_DIR})
   add_definitions( "-DHAS_BOOST" )
 endif(Boost_FOUND)
-
-#------------------------------------------------------------------------------
-# Search for Qt4
-#set(QT_MIN_VERSION 4.4.0)
-#find_package(Qt4 ${QT_MIN_VERSION} REQUIRED)
-#set( QT_USE_QTOPENGL TRUE )
-#set( QT_USE_QTXML TRUE )
-#include( ${QT_USE_FILE} )
 
 #------------------------------------------------------------------------------
 if(WIN32)
@@ -149,9 +137,9 @@ set(DEFAULT_DATA_SUBDIR    share)
 #------------------------------------------------------------------------------
 # Subdirectories
 add_subdirectory( src )
-if( KRIGING_ENABLE_TESTS )
+if( KRIGA_ENABLE_TESTS )
   message(STATUS "Enabling tests")
   enable_testing()
   add_subdirectory( test )
-endif( KRIGING_ENABLE_TESTS )
+endif( KRIGA_ENABLE_TESTS )
 

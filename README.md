@@ -11,8 +11,6 @@ It is expected that KRIGA will implement different class of kriging methods, lis
 - Ordinary kriging
 - Universal kriging or Regression kriging (currently under development)
 
-In a future we expect to create implement some optimization methods based in surrogate-models that
-are build with kriging approximations.
-
-
+In a future I expect to implement some optimization methods based in surrogated-models that
+are built with kriging approximations.
 

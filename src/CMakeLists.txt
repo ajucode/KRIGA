@@ -1,25 +1,19 @@
 #---------------------------------------------------------------------------------------------------
 # Sources
-set( KRIGING_SRCS
-  kriging.cpp )  
+set( KRIGA_SRCS
+  kriga.cpp )  
 
-set( KRIGING_HDRS
+set( KRIGA_HDRS
   distance.hpp
   kernels.hpp
-  kriging.hpp
+  kriga.hpp
 )
 
-set( KRIGING_UIS )
+set( KRIGA_UIS )
 
-set( KRIGING_MOC_HDRS )
+set( KRIGA_MOC_HDRS )
 
-set( KRIGING_RCCS )
-
-#---------------------------------------------------------------------------------------------------
-# Wrapping Qt files
-#qt4_wrap_ui( KRIGING_UIS_H  ${KRIGING_UIS} )
-#qt4_wrap_cpp( KRIGING_MOC_SRCS  ${KRIGING_MOC_HDRS} )
-#qt4_add_resources( KRIGING_RCC_SRCS ${KRIGING_RCCS} )
+set( KRIGA_RCCS )
 
 #---------------------------------------------------------------------------------------------------
 # Including directories
@@ -31,35 +25,34 @@ include_directories(
   ${GSL_INCLUDE_DIRS}
   ${GSLCBLAS_INCLUDE_DIRS}
   ${MPI_INCLUDE_PATH}
-#  ${QT_INCLUDE_DIR}
   ..
   . 
 )
 
 #link_directories(
-#  ${KRIGING_LIBRARIES}
+#  ${KRIGA_LIBRARIES}
 #  ${MPI_LIBRARIES} 
 #  . 
 #)
 
 #---------------------------------------------------------------------------------------------------  
-# Creating libray kriging
-  #${KRIGING_MOC_SRCS} ${KRIGING_UIS_H} ${KRIGING_RCC_SRCS} 
-add_library( kriging STATIC ${KRIGING_SRCS} ${KRIGING_HDRS} )
+# Creating libray kriga
+# ${KRIGA_MOC_SRCS} ${KRIGA_UIS_H} ${KRIGA_RCC_SRCS} 
+add_library( Kriga STATIC ${KRIGA_SRCS} ${KRIGA_HDRS} )
 
-set_target_properties( kriging PROPERTIES 
+set_target_properties( Kriga PROPERTIES 
   LINKER_LANGUAGE CXX )
 
-#  ${QT_LIBRARIES} 
-target_link_libraries( kriging
+target_link_libraries( Kriga
   ${GA_LIBRARIES}
   ${GSL_LIBRARIES}
   ${MPI_LIBRARIES} )
 
 #---------------------------------------------------------------------------------------------------
 # Install
-install( TARGETS kriging 
+install( TARGETS Kriga 
 #  RUNTINE DESTINATION ${CMAKE_INSTALL_PREFIX}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX} )
+  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+)
